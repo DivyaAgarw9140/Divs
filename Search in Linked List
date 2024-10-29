@@ -1,1 +1,19 @@
-Search in Linked List
+Search in Linked List 
+
+
+class Solution { 
+  public:
+    // Function to count nodes of a linked list.
+    bool searchKey(int n, struct Node* head, int key) {
+     //  struct Node* temp;
+     // temp=(struct Node*)malloc(sizeof(struct Node*));
+    //  temp=head;
+ while(head!=NULL)
+      {    
+          if(head->data==key)
+           return true;
+       head= head->next;
+      }
+     return false;//VERY IMP STEP
+    }
+};
