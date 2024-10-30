@@ -1,0 +1,27 @@
+struct ListNode* middleNode(struct ListNode* head) 
+ {  
+if(head== NULL||head->next==NULL)
+    return head;
+
+struct ListNode* temp=head;
+    int c=0;
+    while(head!= NULL)
+        {
+        c++;
+        head=head->next;
+        }
+     //struct Node* temp=head;
+
+    int mid;
+        mid=c/2 +1;
+
+    while(temp!=NULL)
+        {
+        mid--;
+      if(mid==0)
+          break;
+         // return temp->data;
+      temp=temp->next;
+}
+    return temp;
+    }
