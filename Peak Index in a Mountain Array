@@ -1,0 +1,18 @@
+int peakIndexInMountainArray(int* arr, int arrSize) 
+{
+    int mid;
+    int l,h;
+    l=0;
+    h=arrSize-1;
+    while(l<=h)
+    {
+        mid=l+(h-l)/2;
+        if(arr[mid]>arr[mid+1] &&arr[mid]> arr[mid-1])
+        return mid;
+        else if(arr[mid]<arr[mid+1])
+          l=mid+1;
+        else
+        h=mid-1;
+    }
+    return -1;
+}
