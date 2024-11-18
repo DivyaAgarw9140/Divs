@@ -1,0 +1,22 @@
+//First Bad Version
+
+int firstBadVersion(int n)
+{
+    int l,h,m,ans;
+     l=1;
+     h=n;
+        while(l<=h)
+        {
+             m=l+(h-l)/2;
+            if(isBadVersion(m))
+            {
+                ans=m;
+            h=m-1;
+            }
+             else 
+             {
+                l=m+1;
+             }
+        }
+    return ans;
+}
