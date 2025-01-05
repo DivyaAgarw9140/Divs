@@ -1,0 +1,102 @@
+// cirrcular queue
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 10
+char cqueue[MAX];
+int front = -1;
+int rear = -1;
+
+char insertion(char item)
+{
+    if ((rear + 1 % MAX) == front)
+        printf("overflow\n");
+    else if (front == -1)
+    {
+        // queue empty
+        front = 0;
+        rear = 0;
+        cqueue[rear] = item;
+        return cqueue[rear];
+    }
+    else
+    {
+        rear = (rear + 1) % MAX;
+        cqueue[rear] = item;
+
+        return cqueue[rear];
+    }
+}
+//
+char deletion()
+{
+    if (front == -1)
+        printf("Underflow\n");
+
+    else
+    {
+        // / means only one element
+        char deleteditem = cqueue[front];
+        if (front == rear)
+        {
+            front = -1;
+            rear = -1;
+        }
+       
+        else
+        {
+            front = (front + 1)%MAX;
+                  }
+        return deleteditem;
+    }
+}
+
+void traverse()
+{
+    int i = front;
+    do
+    {
+        // front=2
+        printf("%c\n", cqueue[i]);
+        // circular increament
+        i=(i+1)%MAX;
+    } while (i != ((rear + 1) % MAX));
+    // condition saying loop happened
+}
+int main()
+{
+    char res, item;
+    int choice;
+    do
+    {
+        printf("1 insertion\n");
+        printf("2 deletion\n");
+        printf("3 display\n");
+
+        printf("4 exit\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+
+            scanf(" %c", &item);
+            printf("inserted element ");
+            res = insertion(item);
+            printf("%c\n ", res);
+            break;
+
+        case 2:
+            printf("deletion\n");
+            res = deletion();
+
+            printf("%c\n ", res);
+            break;
+
+        case 3:
+            traverse();
+            break;
+        case 4:
+            break;
+        }
+    } while (choice != 4);
+    return 0;
+}
