@@ -1,0 +1,49 @@
+// using stack 
+#include<stdio.h>
+#include<string.h>
+#define MAX 20
+char stack[MAX];
+// initally
+int top=-1; 
+void push(char item);
+char pop();
+int main()
+{
+// input string
+char str[200];
+// input from user
+printf("original\n");
+gets(str);
+for(int i=0;i<strlen(str);i++)
+{
+    push(str[i]);
+}
+for(int i=0;i<strlen(str);i++)
+{
+    // taking return in str[i] value from pop
+str[i]=pop();
+}
+printf("Reveresed\n");
+puts(str);
+}
+void push(char item)
+{
+if(top==MAX-1)
+printf("Overfflow\n");
+else
+{
+    top=top+1;
+    stack[top]=item;
+}  
+}  
+char pop()
+{
+    if(top==-1)
+    printf("underflow\n");
+    else
+        return stack[top--];
+
+}
+
+
+
