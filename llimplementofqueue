@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Node *f = NULL;
+struct Node *r = NULL;
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+void enqueue(int data)
+{
+    struct Node *new;
+    new = malloc(sizeof(struct Node));
+    // memory main new node banni but abhi new node empty hai
+    if (new == NULL)
+    {
+        printf("Overflow\n");
+        exit(1);
+    }
+    new->data = data;
+    new->next = NULL;
+
+    // f and r null queue empty
+    if (f == NULL)
+    {
+        f = r = new;
+    }
+    else
+    {
+        r->next = new;
+        r = new;
+    }
+}
+int dequeue()
+{
+    // temporary pointer created
+    struct Node *temp;
+    temp = f;
+    if (f == NULL)
+    {
+        printf("queue empty\n");
+        exit(1);
+    }
+
+    int value = temp->data;
+    f = f->next;
+    free(temp);
+    temp = NULL;
+    return value;
+}
+
+void print()
+{
+    struct Node *temp;
+    temp = f;
+    // if (isEmpty())
+    // {
+    //     printf("Stack Underflow\n");
+    //     exit(1);
+    // }
+    while (temp)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int choice, data, res;
+    do
+    {
+        printf("\n 1 insertion\n");
+        printf("2 deletion\n");
+        printf("3 display\n");
+
+        printf("4 exit\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            scanf(" %d", &data);
+            printf("inserted %d\n", data);
+            enqueue(data);
+            break;
+
+        case 2:
+            printf("deletion \n");
+            res = dequeue();
+
+            printf("%d ", res);
+            break;
+
+        case 3:
+            print();
+            break;
+        case 4:
+            break;
+        }
+    } while (choice != 4);
+    return 0;
+}
