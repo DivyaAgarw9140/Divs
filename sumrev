@@ -1,0 +1,24 @@
+#include <stdio.h>
+int revmulti(int num)
+{
+    int d;
+    static int sum=0;
+    int rev = 0;
+    if (num == 0)
+        return 0;
+    else
+    {
+        d = num % 10;
+      sum=sum+d;
+         revmulti(num / 10);
+    }
+    return sum;
+}
+int main()
+{
+    int n, res;
+    scanf("%d", &n);
+    res = revmulti(n);
+    printf("%d", res);
+    return 0;
+}
