@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        //because of 0-base indexing 
+        vector<vector<int>>res(rowIndex+1);
+       int numRows=rowIndex+1;
+         //rowIndex=numRows-1;
+        int i,j;
+        for(i=0;i<numRows;i++)
+            {
+              res[i]=vector<int>(i+1,1);
+                for(j=1;j<i;j++)
+                    {
+                        res[i][j]=res[i-1][j] +res[i-1][j-1];
+                    }
+            }
+        return res[rowIndex];
+        
+    }
+};
