@@ -1,0 +1,18 @@
+#include <cmath>
+class Solution {
+public:
+    bool isPowerOfThree(long long n) {
+        // approach total 4 hai 
+
+        long long res= 1162261467;
+        if(n<=0)
+        return false;
+     else if(res % n==0)
+      { return true;
+      }
+       else
+       {
+       return false;
+    }
+    }
+};
