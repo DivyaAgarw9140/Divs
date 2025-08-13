@@ -1,0 +1,18 @@
+#include <cmath>
+class Solution {
+public:
+    bool isPowerOfFour(long long n) {
+     long long res;
+     res=1073741824;
+        if(n<=0)
+        return false;
+       if(res % n ==0)
+      {  return true;
+      }
+        else
+       {
+
+        return false;
+       }
+    }
+};
