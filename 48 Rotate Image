@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int i,j;
+int m,n;
+m=matrix.size();
+n=m;
+
+    //transpose+reverse 
+
+//dry run kar liya mene
+for(i=0;i<m;i++)
+{ //kyunkii diagonal swapping karni hai isliye j=i aur matrix[i][j] ,matrix[j][i]
+    for(j=i;j<n;j++)
+    {
+        swap(matrix[i][j], matrix[j][i]);
+
+    }
+}
+
+// reverse each row 
+for(i=0;i<m;i++)
+    {
+        reverse(matrix[i].begin(), matrix[i].end());
+ 
+    }
+    }
+};
