@@ -1,0 +1,70 @@
+
+ //Definition for singly-linked list.
+  /*struct ListNode {
+     int val;
+      ListNode *next;
+      ListNode() : val(0), next(nullptr) {}
+      ListNode(int x) : val(x), next(nullptr) {}
+      ListNode(int x, ListNode *next) : val(x), next(next) {}
+ };*/
+
+class Solution {
+public:
+    vector<vector<int>> spiralMatrix(int m, int n, ListNode* head) 
+{
+vector<vector<int>> matrix(m,vector<int> (n,-1));
+  m=matrix.size();
+     n=matrix[0].size();
+int top=0;
+int down=m-1;//i vala
+int left=0;
+int right=n-1;//j vala
+int dir=0;
+
+int i;
+      while(top<=down && left<=right)  
+      {
+if(dir==0)
+{
+    for(i=left;head!=NULL && i<=right;i++)
+    {matrix[top][i]=head->val;//current element
+    head=head->next;//next element 
+}
+top++;
+}
+if(dir==1)
+{
+    for(i=top;head!=NULL && i<=down;i++)
+ {
+  matrix[i][right]=head->val;
+  head=head->next;
+ }
+right--;
+}
+if(dir==2)
+{
+    for(i=right;head!=NULL && i>=left;i--)
+   { matrix[down][i]=head->val;
+   head=head->next;
+}
+down--;
+}
+if(dir==3)
+{
+    for(i=down;head!=NULL && i>=top;i--)
+  {  matrix[i][left]=head->val;
+  head=head->next;
+}
+left++;
+}
+
+//imp
+dir++;
+if(dir>3)
+dir=0;
+
+      }
+      return matrix;
+    }
+};
+        
