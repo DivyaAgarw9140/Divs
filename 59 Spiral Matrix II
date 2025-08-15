@@ -1,0 +1,53 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+     vector<vector<int>>matrix(n,vector<int> (n));
+     n=matrix[0].size();
+int top=0;
+int down=n-1;
+int left=0;
+int right=n-1;
+int dir=0;
+int counter=1;
+int i;
+      while(top<=down && left<=right)  
+      {
+if(dir==0)
+{
+    for(i=left;i<=right;i++)
+    {matrix[top][i]=counter++;
+}
+top++;
+}
+if(dir==1)
+{
+    for(i=top;i<=down;i++)
+ {
+  matrix[i][right]=counter++;
+}
+right--;
+}
+if(dir==2)
+{
+    for(i=right;i>=left;i--)
+   { matrix[down][i]=counter++;
+}
+down--;
+}
+if(dir==3)
+{
+    for(i=down;i>=top;i--)
+  {  matrix[i][left]=counter++;
+}
+left++;
+}
+
+//imp
+dir++;
+if(dir>3)
+dir=0;
+
+      }
+      return matrix;
+    }
+};
