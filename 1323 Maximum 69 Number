@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maximum69Number (int num) {
+        int num2;
+        int i,n;
+
+        // convert num to string
+        string s=std::to_string(num);
+n=s.size();
+        // tranversing through string
+        for(i=0;i<n;i++)
+        {
+            if(s[i]=='6')
+           { s[i]='9';
+            break;
+           }
+        }
+           /* 6->9 chota kardega number ko 
+            aur break isliye kyunki l->r sabse pehle
+            jo s[i] convert hogya utna bada*/
+            num2=std::stoi(s);
+            return num2;
+        }
+};
